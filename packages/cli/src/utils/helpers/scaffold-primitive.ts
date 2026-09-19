@@ -26,7 +26,6 @@ export const scaffoldPrimitive = (
 
   writeFileIfNotExists(primitiveIndexFile, templates.index);
 
-  // eslint-disable-next-line no-console
   console.log(
     `✅ Created primitive ${chalk.cyan(
       `${pascal}Primitive`,
