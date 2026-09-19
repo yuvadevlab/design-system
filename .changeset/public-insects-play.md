@@ -1,5 +1,4 @@
 ---
-"@yuva-devlab/primitives": minor
 "@yuva-devlab/ui": minor
 ---
 

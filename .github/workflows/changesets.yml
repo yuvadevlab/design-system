@@ -13,7 +13,7 @@ jobs:
     name: "Validates if a changeset is required for the pull request"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
         if: "!startsWith(github.head_ref, 'changeset-release/')"
         with:
           fetch-depth: 0
@@ -21,10 +21,10 @@ jobs:
       - uses: ./.github/actions/setup-node-env
         if: "!startsWith(github.head_ref, 'changeset-release/')"
 
-      - name: Fetch Base
+      - name: Fetch Base Branch
         if: "!startsWith(github.head_ref, 'changeset-release/')"
-        run: git fetch origin main:main
+        run: git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
 
-      - name: Validate
+      - name: Validate Changeset Status
         if: "!startsWith(github.head_ref, 'changeset-release/')"
-        run: pnpm changeset status
+        run: pnpm changeset status --since=origin/${{ github.base_ref }}
