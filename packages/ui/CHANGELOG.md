@@ -1,5 +1,20 @@
 # @yuva-devlab/ui
 
+## 1.0.0
+
+### Major Changes
+
+- b622a41: Migrate to Tailwind CSS 4 and remove legacy Vanilla Extract:
+
+  - `@yuva-devlab/ui`: Rebuilt component suite using Radix UI primitives, class-variance-authority (CVA), and Tailwind CSS 4 utilities compiled with tsup.
+  - `@yuva-devlab/tokens`: Refactored into a pure CSS package providing Tailwind CSS 4 `@theme inline` preset and OKLCH application themes (FinAI, OrchestrAI).
+  - `@yuva-devlab/cli`: Modernized component scaffolding templates to generate Tailwind + CVA components.
+  - Removed deprecated `@yuva-devlab/primitives` and `@yuva-devlab/colors` packages.
+
+### Minor Changes
+
+- cb8e920: If adding the "use client"; banner is a new feature that enables compatibility with Next.js/RSC.
+
 ## 0.2.0
 
 ### Minor Changes
