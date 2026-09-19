@@ -190,24 +190,15 @@ export type CardProps = CardPrimitiveProps & {
 };
 ```
 
-```ts
-// card.styles.css.ts
-import { style } from "@vanilla-extract/css";
-import { colors, spacing } from "@yuva-devlab/tokens";
+```tsx
+// card.tsx (Tailwind CSS 4 + CVA)
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
 
-export const base = style({
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: spacing.md,
-  borderRadius: "8px",
-  borderWidth: 1,
-  borderStyle: "solid",
-  borderColor: colors.border.default,
-  backgroundColor: colors.bg.surface,
-  color: colors.text.primary,
-  cursor: "pointer",
-});
+export const cardVariants = cva(
+  "rounded-xl border bg-card text-card-foreground shadow",
+);
 ```
 
 ### Primitive Component
@@ -241,10 +232,7 @@ export const CheckboxPrimitive = React.forwardRef<
   CheckboxPrimitiveProps
 >(({ children, ...rest }, ref) => {
   return (
-    <div
-      ref={ref}
-      {...rest}
-    >
+    <div ref={ref} {...rest}>
       {children}
     </div>
   );

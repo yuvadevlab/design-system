@@ -30,7 +30,6 @@ export const scaffoldStyledComponent = (
 
   writeFileIfNotExists(testFile, templates.test);
 
-  // eslint-disable-next-line no-console
   console.log(
     `✅ Created styled component ${chalk.cyan(pascal)} in ${chalk.gray(
       `packages/ui/src/components/${kebab}`,

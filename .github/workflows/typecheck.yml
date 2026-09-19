@@ -18,14 +18,11 @@ concurrency:
 
 jobs:
   typecheck:
-    name: "Performs static TypeScript analysis on all packages"
+    name: "Performs static TypeScript analysis on all packages and apps"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node-env
-
-      - name: Build Packages
-        run: pnpm --filter "!playground" --filter "!docs" build
 
       - name: Run Type Check
         run: pnpm run type-check

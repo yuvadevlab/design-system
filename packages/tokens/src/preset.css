@@ -1,0 +1,159 @@
+/**
+ * Yuva DevLab Design System — Tailwind CSS 4 Preset Bridge
+ * 
+ * Maps standard design tokens and CSS custom properties to Tailwind utility classes.
+ * Can be consumed by any downstream application (e.g. FinAI, OrchestrAI) via:
+ * `@import "@yuva-devlab/tokens/preset.css";`
+ */
+
+@theme inline {
+  /* ── Radii Mappings ──────────────────────────────────────────────────────── */
+  --radius-sm: calc(var(--radius, 0.5rem) - 4px);
+  --radius-md: calc(var(--radius, 0.5rem) - 2px);
+  --radius-lg: var(--radius, 0.5rem);
+  --radius-xl: calc(var(--radius, 0.5rem) + 4px);
+  --radius-2xl: calc(var(--radius, 0.5rem) + 8px);
+  --radius-3xl: calc(var(--radius, 0.5rem) + 12px);
+  --radius-4xl: calc(var(--radius, 0.5rem) + 16px);
+
+  /* ── Semantic Color Tokens ────────────────────────────────────────────────── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ── Contextual System Colors ────────────────────────────────────────────── */
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-overlay: var(--overlay);
+
+  /* ── Navigation & Sidebar ────────────────────────────────────────────────── */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Visual Data Telemetry (Charts) ──────────────────────────────────────── */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ── Component Control Dimensions ────────────────────────────────────────── */
+  --height-control-xs: var(--control-height-xs, 1.75rem);
+  --height-control-sm: var(--control-height-sm, 2rem);
+  --height-control-md: var(--control-height-md, 2.25rem);
+  --height-control-lg: var(--control-height-lg, 2.5rem);
+  --height-control-xl: var(--control-height-xl, 3rem);
+
+  /* ── Icon Sizing Tokens ──────────────────────────────────────────────────── */
+  --size-icon-xs: var(--icon-xs, 0.875rem);
+  --size-icon-sm: var(--icon-sm, 1rem);
+  --size-icon-md: var(--icon-md, 1.25rem);
+  --size-icon-lg: var(--icon-lg, 1.5rem);
+  --size-icon-xl: var(--icon-xl, 2rem);
+}
+
+/* ── Cybernetic Grid & Graph Topologies ────────────────────────────────────── */
+@utility execution-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+@utility topology-grid {
+  background-image: radial-gradient(
+    circle at center,
+    var(--border) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+/* ── Live Agent Telemetry Animations ───────────────────────────────────────── */
+@utility animate-agent-pulse {
+  animation: agent-pulse 1.8s ease-in-out infinite;
+}
+
+@utility animate-signal-travel {
+  animation: signal-travel 1.5s linear infinite;
+}
+
+@utility animate-progress-flow {
+  animation: progress-flow 1.8s ease-in-out infinite;
+}
+
+@utility runner-enter {
+  animation: runner-enter 260ms ease-out both;
+}
+
+@keyframes agent-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes signal-travel {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - 0.5rem);
+  }
+}
+
+@keyframes progress-flow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes runner-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

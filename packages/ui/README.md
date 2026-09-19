@@ -56,15 +56,8 @@ function App() {
   return (
     <Container size="lg">
       <Stack gap="md">
-        <Input
-          label="Email"
-          placeholder="you@example.com"
-          type="email"
-        />
-        <Button
-          variant="primary"
-          size="md"
-        >
+        <Input label="Email" placeholder="you@example.com" type="email" />
+        <Button variant="primary" size="md">
           Sign In
         </Button>
       </Stack>
@@ -132,18 +125,12 @@ import { Container, Stack, Flex, Box } from "@yuva-devlab/ui";
 
 <Container size="xl">
   <Stack gap="lg">
-    <Flex
-      align="center"
-      justify="between"
-    >
+    <Flex align="center" justify="between">
       <Box p="md">Logo</Box>
       <Box>Navigation</Box>
     </Flex>
 
-    <Grid
-      cols={{ base: 1, md: 2, lg: 3 }}
-      gap="md"
-    >
+    <Grid cols={{ base: 1, md: 2, lg: 3 }} gap="md">
       <Box p="lg">Card 1</Box>
       <Box p="lg">Card 2</Box>
       <Box p="lg">Card 3</Box>
@@ -193,9 +180,7 @@ pnpm --filter @yuva-devlab/ui type-check
 
 ## Related Packages
 
-- [@yuva-devlab/primitives](../primitives) - Headless component logic
-- [@yuva-devlab/tokens](../tokens) - Design system tokens
-- [@yuva-devlab/colors](../colors) - Color palette generation
+- [@yuva-devlab/tokens](../tokens) - Tailwind CSS 4 preset and design token theme bridge
 
 ## License
 

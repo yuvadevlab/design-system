@@ -48,8 +48,7 @@ export const registerCreateComponentCommand = (program: Command): void => {
 
           const name = nameArg || answers.name;
           const kind = (options.kind || answers.kind) as
-            | "component"
-            | "primitive";
+            "component" | "primitive";
 
           if (!name) {
             console.error(chalk.red("Component name is required."));

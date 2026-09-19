@@ -1,53 +1,67 @@
 import { styledIndexTemplate } from "./index.template";
 
 const styledComponentTemplate = (pascal: string, kebab: string): string => {
+  const variantVar = `${kebab.replace(/-/g, "")}Variants`;
   return `
-import React from "react";
-import { ${pascal}Primitive } from "@yuva-devlab/primitives";
-import clsx from "clsx";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import * as styles from "./${kebab}.styles.css";
-import type { ${pascal}Props } from "./${kebab}.types";
+import { cn } from "../../lib/utils";
 
-export const ${pascal} = React.forwardRef<HTMLDivElement, ${pascal}Props>(
-  ({ className, children, ...rest }, ref) => {
-    return (
-      <${pascal}Primitive
-        ref={ref}
-        className={clsx(styles.base, className)}
-        {...rest}
-      >
-        {children}
-      </${pascal}Primitive>
-    );
+const ${variantVar} = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
   },
 );
 
+export interface ${pascal}Props
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof ${variantVar}> {
+  asChild?: boolean;
+}
+
+const ${pascal} = React.forwardRef<HTMLDivElement, ${pascal}Props>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "div";
+    return (
+      <Comp
+        className={cn(${variantVar}({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
 ${pascal}.displayName = "${pascal}";
+
+export { ${pascal}, ${variantVar} };
 `;
 };
 
 const styledTypesTemplate = (pascal: string): string => {
   return `
-import type { ${pascal}PrimitiveProps } from "@yuva-devlab/primitives";
-
-export interface ${pascal}Props extends ${pascal}PrimitiveProps {
-  // TODO: Add props here
+export interface ${pascal}CustomProps {
+  // Add custom props here
 }
 `;
 };
 
 const styledStylesTemplate = (): string => {
   return `
-import { style } from "@vanilla-extract/css";
-import { colors, spacing } from "@yuva-devlab/tokens";
-
-export const base = style({
-  // TODO: Add styles here
-  // padding: spacing.md,
-  // backgroundColor: colors.bg.surface,
-  // color: colors.text.primary,
-});
+// Tailwind CSS 4 utility classes are used directly with class-variance-authority.
 `;
 };
 
