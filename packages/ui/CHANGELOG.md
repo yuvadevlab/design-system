@@ -1,5 +1,11 @@
 # @yuva-devlab/ui
 
+## 1.0.1
+
+### Patch Changes
+
+- 0bbe683: Add `cursor-pointer` and primary focus outline ring styles to interactive components (`Button`, `Tabs`, `Select`, `Checkbox`, `DropdownMenu`, `Breadcrumb`).
+
 ## 1.0.0
 
 ### Major Changes
