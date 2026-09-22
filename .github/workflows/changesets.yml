@@ -5,26 +5,23 @@ on:
     branches: [main, dev]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
   changesets:
     name: "Validates if a changeset is required for the pull request"
+    if: "!startsWith(github.head_ref, 'changeset-release/') && !startsWith(github.head_ref, 'sync/')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        if: "!startsWith(github.head_ref, 'changeset-release/') && !startsWith(github.head_ref, 'sync/')"
         with:
           fetch-depth: 0
 
       - uses: ./.github/actions/setup-node-env
-        if: "!startsWith(github.head_ref, 'changeset-release/') && !startsWith(github.head_ref, 'sync/')"
 
       - name: Fetch Base Branch
-        if: "!startsWith(github.head_ref, 'changeset-release/') && !startsWith(github.head_ref, 'sync/')"
         run: git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
 
       - name: Validate Changeset Status
-        if: "!startsWith(github.head_ref, 'changeset-release/') && !startsWith(github.head_ref, 'sync/')"
         run: pnpm changeset status --since=origin/${{ github.base_ref }}

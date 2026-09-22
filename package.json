@@ -1,5 +1,5 @@
 {
-  "name": "yuva-devlab-design-system",
+  "name": "devlab-shared",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,12 +10,12 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "type-check": "turbo run type-check --filter=!//",
-    "typecheck": "pnpm run type-check",
+    "typecheck": "turbo run typecheck --filter=!//",
     "test": "turbo run test --filter=!//",
     "test:coverage": "turbo run test --filter=!// -- --coverage",
     "clean": "turbo run clean --filter=!//",
-    "validate": "pnpm run format:check && pnpm run lint && pnpm run type-check && pnpm run build && pnpm run test",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "validate": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run build && pnpm run test",
     "fix": "pnpm run format && pnpm run lint:fix",
     "changeset": "changeset",
     "version-packages": "changeset version",

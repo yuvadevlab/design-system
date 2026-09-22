@@ -23,9 +23,7 @@ export default {
       "always",
       [
         "ui",
-        "primitives",
-        "tokens",
-        "colors",
+        "logger",
         "cli",
         "docs",
         "playground",
@@ -36,6 +34,7 @@ export default {
         "workspace",
         "release",
         "infra",
+        "ci",
       ],
     ],
     "subject-case": [2, "never", ["upper-case"]],

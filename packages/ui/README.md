@@ -139,22 +139,42 @@ import { Container, Stack, Flex, Box } from "@yuva-devlab/ui";
 </Container>;
 ```
 
-## Styling
+## Styling & Brand Theming
 
-This library uses Vanilla Extract for type-safe, zero-runtime CSS. All styles
-are compiled at build time.
+### 1. Global Styles Setup
 
-### Importing Styles
+Import the UI stylesheet in your root layout:
 
 ```tsx
-// Import global styles once in your app entry point
 import "@yuva-devlab/ui/styles.css";
 ```
 
-### Theming
+Or import specific brand themes directly:
 
-The library includes a natural theme by default. Custom theming support coming
-soon.
+```css
+@import "@yuva-devlab/ui/styles.css";
+@import "@yuva-devlab/ui/themes/finai.css";
+```
+
+### 2. Brand & Theme Provider (`ConfigProvider`)
+
+Wrap your application with `ConfigProvider` (or `ThemeProvider`) and pass your `brand`:
+
+```tsx
+import { ConfigProvider } from "@yuva-devlab/ui";
+
+export function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <ConfigProvider brand="finai" defaultTheme="system">
+      {children}
+    </ConfigProvider>
+  );
+}
+```
+
+The provider sets the appropriate `data-brand` and `data-theme` attributes on `<html>`, instantly activating the scoped design tokens for that brand without loading or exposing styles of other brands!
+
+---
 
 ## Development
 
@@ -169,18 +189,13 @@ pnpm --filter @yuva-devlab/ui build
 pnpm --filter @yuva-devlab/ui test
 
 # Type check
-pnpm --filter @yuva-devlab/ui type-check
+pnpm --filter @yuva-devlab/ui typecheck
 ```
 
 ## Documentation
 
 - **Storybook**: Run `pnpm dev:docs` to view interactive component documentation
 - **Playground**: Run `pnpm dev:playground` to test components in a live
-  environment
-
-## Related Packages
-
-- [@yuva-devlab/tokens](../tokens) - Tailwind CSS 4 preset and design token theme bridge
 
 ## License
 

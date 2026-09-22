@@ -4,6 +4,7 @@
  */
 
 :root,
+[data-brand="finai"],
 [data-theme="finai"] {
   --radius: 0.75rem;
   --background: oklch(0.985 0.001 247);
@@ -72,7 +73,10 @@
 }
 
 .dark,
-[data-theme="finai-dark"] {
+[data-theme="dark"],
+[data-theme="finai-dark"],
+[data-brand="finai"].dark,
+[data-brand="finai"][data-theme="dark"] {
   --background: oklch(0.16 0.015 260);
   --foreground: oklch(0.97 0.003 260);
   --card: oklch(0.2 0.015 260);
