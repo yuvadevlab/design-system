@@ -38,7 +38,7 @@ export default tseslint.config(
     settings: {
       tailwindcss: {
         callees: ["cn", "cva"],
-        cssConfigPath: path.resolve(rootDir, "packages/tokens/src/styles.css"),
+        cssConfigPath: path.resolve(rootDir, "packages/ui/src/styles.css"),
       },
     },
   },

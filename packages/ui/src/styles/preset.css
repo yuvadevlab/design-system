@@ -2,8 +2,8 @@
  * Yuva DevLab Design System — Tailwind CSS 4 Preset Bridge
  * 
  * Maps standard design tokens and CSS custom properties to Tailwind utility classes.
- * Can be consumed by any downstream application (e.g. FinAI, OrchestrAI) via:
- * `@import "@yuva-devlab/tokens/preset.css";`
+ * Can be consumed by downstream applications via:
+ * `@import "@yuva-devlab/ui/preset.css";`
  */
 
 @theme inline {

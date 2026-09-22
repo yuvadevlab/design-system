@@ -5,6 +5,10 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "*.css",
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": {
@@ -14,6 +18,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./styles.css": "./dist/styles.css",
+    "./preset.css": "./dist/preset.css",
+    "./themes/finai.css": "./dist/themes/finai.css",
+    "./themes/orchestrai.css": "./dist/themes/orchestrai.css",
     "./package.json": "./package.json"
   },
   "files": [
@@ -26,7 +34,7 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist node_modules .turbo"
   },
   "dependencies": {

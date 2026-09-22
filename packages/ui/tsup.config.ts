@@ -1,4 +1,5 @@
 import { defineConfig } from "tsup";
+import fs from "node:fs";
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -15,5 +16,11 @@ export default defineConfig({
     options.banner = {
       js: '"use client";',
     };
+  },
+  async onSuccess() {
+    fs.cpSync("src/styles", "dist/styles", { recursive: true });
+    fs.copyFileSync("src/styles/styles.css", "dist/styles.css");
+    fs.copyFileSync("src/styles/preset.css", "dist/preset.css");
+    fs.cpSync("src/styles/themes", "dist/themes", { recursive: true });
   },
 });
