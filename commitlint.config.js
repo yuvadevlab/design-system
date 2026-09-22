@@ -23,9 +23,7 @@ export default {
       "always",
       [
         "ui",
-        "primitives",
-        "tokens",
-        "colors",
+        "logger",
         "cli",
         "docs",
         "playground",

@@ -29,7 +29,7 @@
       "inputs": ["$TURBO_DEFAULT$", "prettier.config.js", ".prettierignore"],
       "outputs": []
     },
-    "type-check": {
+    "typecheck": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", "tsconfig.json"],
       "outputs": []

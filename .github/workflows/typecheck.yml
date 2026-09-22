@@ -25,4 +25,4 @@ jobs:
       - uses: ./.github/actions/setup-node-env
 
       - name: Run Type Check
-        run: pnpm run type-check
+        run: pnpm run typecheck

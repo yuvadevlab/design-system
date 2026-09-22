@@ -9,4 +9,6 @@ storybook-static
 
 # Generated files
 *.d.ts
+*.d.cts
 coverage
+pnpm-lock.yaml
