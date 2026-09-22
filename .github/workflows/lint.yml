@@ -1,6 +1,11 @@
 name: "🎨 Lint"
 
 on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".vscode/**"
   pull_request:
     branches: [main, dev]
     paths-ignore:
@@ -14,7 +19,6 @@ concurrency:
 jobs:
   lint:
     name: "Runs ESLint checks across the workspace"
-    if: "!startsWith(github.head_ref, 'sync/')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
