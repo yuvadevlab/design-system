@@ -1,0 +1,53 @@
+{
+  "name": "@yuva-devlab/tokens",
+  "version": "1.0.0",
+  "description": "Design tokens, brand themes, and Tailwind CSS 4 preset bridge for Yuva DevLab",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.ts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./preset.css": "./dist/preset.css",
+    "./styles.css": "./dist/styles.css",
+    "./root.css": "./dist/root.css",
+    "./themes/finai.css": "./dist/themes/finai.css",
+    "./themes/orchestrai.css": "./dist/themes/orchestrai.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist node_modules .turbo"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@yuva-devlab/eslint-config": "workspace:*",
+    "@yuva-devlab/prettier-config": "workspace:*",
+    "@yuva-devlab/typescript-config": "workspace:*",
+    "eslint": "^9.39.1",
+    "prettier": "^3.9.8",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  }
+}

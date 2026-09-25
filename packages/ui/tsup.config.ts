@@ -1,5 +1,6 @@
 import { defineConfig } from "tsup";
 import fs from "node:fs";
+import path from "node:path";
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -20,7 +21,59 @@ export default defineConfig({
   async onSuccess() {
     fs.cpSync("src/styles", "dist/styles", { recursive: true });
     fs.copyFileSync("src/styles/styles.css", "dist/styles.css");
+    fs.copyFileSync("src/styles/root.css", "dist/root.css");
+    fs.copyFileSync("src/styles/common.css", "dist/common.css");
     fs.copyFileSync("src/styles/preset.css", "dist/preset.css");
     fs.cpSync("src/styles/themes", "dist/themes", { recursive: true });
+    fs.cpSync("src/components", "dist/components", {
+      recursive: true,
+      filter: (src) => !src.endsWith(".tsx") && !src.endsWith(".ts"),
+    });
+
+    // Bundle all colocated component CSS files into @layer dl-components
+    const compDir = path.resolve("src/components");
+    const dirs = fs
+      .readdirSync(compDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory());
+    const cssBlocks: string[] = [];
+
+    for (const d of dirs) {
+      const cssPath = path.join(compDir, d.name, `${d.name}.css`);
+      if (fs.existsSync(cssPath)) {
+        const content = fs.readFileSync(cssPath, "utf8").trim();
+        if (content) {
+          cssBlocks.push(
+            `  /* ── ${d.name} ── */\n  ${content.replace(/\n/g, "\n  ")}`,
+          );
+        }
+      }
+    }
+
+    const bundledCss = `/**
+ * @file components.css
+ * @description Bundled modular dl-* component styles wrapped in @layer dl-components.
+ * Pure CSS — zero Tailwind dependency. Scoped in @layer so consumer utilities take precedence.
+ */
+
+@layer dl-components {
+${cssBlocks.join("\n\n")}
+}
+`;
+
+    let finalCss = bundledCss;
+    try {
+      const prettier = await import("prettier");
+      const prettierConfig =
+        (await prettier.resolveConfig(process.cwd())) || {};
+      finalCss = await prettier.format(bundledCss, {
+        ...prettierConfig,
+        parser: "css",
+      });
+    } catch {
+      // fallback to raw bundledCss if prettier formatting fails
+    }
+
+    fs.writeFileSync("dist/components.css", finalCss, "utf8");
+    fs.writeFileSync("src/styles/components.css", finalCss, "utf8");
   },
 });
