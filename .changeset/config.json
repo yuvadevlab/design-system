@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": ["@yuva-devlab/ui-docs", "@yuva-devlab/ui-storybook"]
 }
