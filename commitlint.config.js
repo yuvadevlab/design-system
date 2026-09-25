@@ -23,6 +23,7 @@ export default {
       "always",
       [
         "ui",
+        "tokens",
         "logger",
         "cli",
         "docs",

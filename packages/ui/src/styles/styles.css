@@ -1,6 +1,18 @@
-@import "tailwindcss";
-@import "./preset.css";
+/**
+ * @file src/styles/styles.css
+ * @description Master stylesheet for @yuva-devlab/ui.
+ * Architecture: Tokens (@yuva-devlab/tokens) -> Common Primitives -> Component Styles.
+ * Zero Tailwind dependency. Pure CSS with scoped dl-* classes.
+ */
 
-/* ── Brand Scoped Themes ─────────────────────────────────────────────────── */
-@import "./themes/finai.css";
-@import "./themes/orchestrai.css";
+/* ── 0. Establish Layer Precedence (utilities > dl-components > dl-base) ─── */
+@layer dl-base, dl-components, utilities;
+
+/* ── 1. Design Tokens & Theme Baseline ───────────────────────────────────── */
+@import "@yuva-devlab/tokens/styles.css";
+
+/* ── 2. Common Animations & Primitives ───────────────────────────────────── */
+@import "./common.css";
+
+/* ── 3. Modular Scoped Component Styles ─────────────────────────────────── */
+@import "./components.css";
