@@ -1,0 +1,26 @@
+import { Meta, Title, Description, Canvas, Controls } from "@storybook/blocks";
+import * as AlertStories from "./alert.stories";
+
+<Meta of={AlertStories} />
+
+<Title />
+
+# Alert
+
+The `Alert` component displays contextual feedback, announcements, or critical system errors to users with accessible ARIA semantics and high-contrast color styling.
+
+## Default Alert
+
+Used for neutral announcements, system notices, and informational messages.
+
+<Canvas of={AlertStories.Default} />
+
+## Destructive Alert
+
+Used for critical runtime exceptions, failed agent steps, or irreversible actions.
+
+<Canvas of={AlertStories.Destructive} />
+
+## Component Properties
+
+<Controls />

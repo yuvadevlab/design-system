@@ -1,0 +1,90 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { Sun, Moon, ExternalLink, BookOpen, Layers } from "lucide-react";
+import { useTheme, type Brand } from "./theme-provider";
+import {
+  Button,
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@yuva-devlab/ui";
+
+export function Header() {
+  const { brand, setBrand, mode, toggleMode } = useTheme();
+
+  return (
+    <header className="border-border bg-card/80 sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b px-6 backdrop-blur-md">
+      {/* Brand Logo & Title */}
+      <div className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 font-bold tracking-tight"
+        >
+          <div className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-lg shadow-sm">
+            <Layers className="size-4" />
+          </div>
+          <span className="text-foreground text-base">DevLab UI</span>
+          <span className="border-border text-muted-foreground rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+            v1.1.0
+          </span>
+        </Link>
+      </div>
+
+      {/* Center/Right Toolbar */}
+      <div className="flex items-center gap-3">
+        {/* Brand Switcher */}
+        <div className="flex items-center gap-1.5 text-xs font-medium">
+          <span className="text-muted-foreground hidden sm:inline">Brand:</span>
+          <Select value={brand} onValueChange={(val) => setBrand(val as Brand)}>
+            <SelectTrigger className="h-8 w-44 text-xs font-medium">
+              <SelectValue placeholder="Select Brand" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="orchestrai">
+                🤖 OrchestrAI (Teal/Blue)
+              </SelectItem>
+              <SelectItem value="finai">🌿 FinAI (Emerald Green)</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Storybook Link */}
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="hidden h-8 gap-1.5 text-xs md:inline-flex"
+        >
+          <a
+            href="http://localhost:6006"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BookOpen className="size-3.5" />
+            <span>Storybook</span>
+            <ExternalLink className="size-3 opacity-60" />
+          </a>
+        </Button>
+
+        {/* Dark/Light Mode Toggle */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleMode}
+          className="size-8 rounded-md"
+          aria-label="Toggle dark/light mode"
+        >
+          {mode === "dark" ? (
+            <Sun className="size-4 text-amber-400" />
+          ) : (
+            <Moon className="size-4" />
+          )}
+        </Button>
+      </div>
+    </header>
+  );
+}

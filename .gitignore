@@ -3,4 +3,5 @@ dist
 .turbo
 .env
 storybook-static
+.next
 coverage
