@@ -1,0 +1,30 @@
+{
+  "name": "@yuva-devlab/ui-storybook",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static"
+  },
+  "dependencies": {
+    "@yuva-devlab/tokens": "workspace:*",
+    "@yuva-devlab/ui": "workspace:*",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-links": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "storybook": "^8.6.14",
+    "typescript": "^6.0.3",
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,196 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableCaption,
+} from "./table";
+import { StatusBadge } from "../status-badge/status-badge";
+import { Button } from "../button/button";
+
+const meta: Meta<typeof Table> = {
+  title: "Components/Table",
+  component: Table,
+  tags: ["autodocs"],
+};
+
+export default meta;
+type Story = StoryObj<typeof Table>;
+
+const executions = [
+  {
+    id: "exec-98201",
+    agent: "Code Synthesizer",
+    role: "Fullstack Architect",
+    model: "gemini-2.5-pro",
+    status: "Completed",
+    tokens: "14,820",
+    runtime: "3.4s",
+  },
+  {
+    id: "exec-98202",
+    agent: "Forensic Debugger",
+    role: "Core Diagnostic",
+    model: "claude-3-7-sonnet",
+    status: "Active",
+    tokens: "8,430",
+    runtime: "1.8s",
+  },
+  {
+    id: "exec-98203",
+    agent: "Policy Sentinel",
+    role: "Security Guardrail",
+    model: "gemini-2.5-flash",
+    status: "Needs Approval",
+    tokens: "1,250",
+    runtime: "0.6s",
+  },
+  {
+    id: "exec-98204",
+    agent: "Database Migrator",
+    role: "Data Infrastructure",
+    model: "claude-3-5-haiku",
+    status: "Failed",
+    tokens: "22,400",
+    runtime: "12.1s",
+  },
+  {
+    id: "exec-98205",
+    agent: "Telemetry Streamer",
+    role: "Observability",
+    model: "gemini-2.5-flash",
+    status: "Offline",
+    tokens: "0",
+    runtime: "—",
+  },
+];
+
+export const Default: Story = {
+  render: () => (
+    <div style={{ width: "100%", maxWidth: "960px" }}>
+      <Table>
+        <TableCaption>
+          Autonomous Agent Execution Fleet — Realtime Metrics
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead
+              style={{
+                width: "110px",
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "11px",
+              }}
+            >
+              Execution ID
+            </TableHead>
+            <TableHead>Agent Name</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead
+              style={{
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "11px",
+              }}
+            >
+              Model Engine
+            </TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead
+              style={{
+                textAlign: "right",
+                fontFamily: "var(--font-mono, monospace)",
+                fontSize: "11px",
+              }}
+            >
+              Tokens Used
+            </TableHead>
+            <TableHead style={{ textAlign: "right" }}>Runtime</TableHead>
+            <TableHead style={{ textAlign: "right", width: "90px" }}>
+              Actions
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {executions.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell
+                style={{
+                  fontFamily: "var(--font-mono, monospace)",
+                  fontSize: "12px",
+                  color: "var(--primary)",
+                  fontWeight: 500,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.id}
+              </TableCell>
+              <TableCell
+                style={{
+                  fontWeight: 500,
+                  fontSize: "12px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.agent}
+              </TableCell>
+              <TableCell
+                style={{
+                  fontSize: "12px",
+                  color: "var(--muted-foreground)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.role}
+              </TableCell>
+              <TableCell
+                style={{
+                  fontFamily: "var(--font-mono, monospace)",
+                  fontSize: "11px",
+                  color: "var(--muted-foreground)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.model}
+              </TableCell>
+              <TableCell style={{ whiteSpace: "nowrap" }}>
+                <StatusBadge status={row.status} />
+              </TableCell>
+              <TableCell
+                style={{
+                  textAlign: "right",
+                  fontFamily: "var(--font-mono, monospace)",
+                  fontSize: "12px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.tokens}
+              </TableCell>
+              <TableCell
+                style={{
+                  textAlign: "right",
+                  fontFamily: "var(--font-mono, monospace)",
+                  fontSize: "12px",
+                  color: "var(--muted-foreground)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {row.runtime}
+              </TableCell>
+              <TableCell style={{ textAlign: "right", whiteSpace: "nowrap" }}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  style={{ height: "28px", fontSize: "11px" }}
+                >
+                  View Trace
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  ),
+};

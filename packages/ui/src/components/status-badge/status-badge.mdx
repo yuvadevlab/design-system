@@ -1,0 +1,24 @@
+import { Meta, Title, Description, Canvas, Controls } from "@storybook/blocks";
+import * as StatusBadgeStories from "./status-badge.stories";
+
+<Meta of={StatusBadgeStories} />
+
+<Title />
+
+# StatusBadge
+
+Context-aware status indicator with colored dot and semantic token mapping for agent execution states.
+
+## Default
+
+<Canvas of={StatusBadgeStories.Default} />
+
+## Statuses
+
+Automatically adapts its color and pulse dot based on status names like `Active`, `Completed`, `In Progress`, `Needs Approval`, `Failed`, and `Offline`.
+
+<Canvas of={StatusBadgeStories.AllStatuses} />
+
+## Component Properties
+
+<Controls />
