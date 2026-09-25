@@ -24,6 +24,8 @@ export default tseslint.config(
       "**/.output/**",
       "**/*.d.ts",
       "**/tsup.config.bundled*",
+      "**/storybook-static/**",
+      "**/.next/**",
     ],
   },
   {

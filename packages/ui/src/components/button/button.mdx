@@ -1,0 +1,40 @@
+import { Meta, Title, Description, Canvas, Controls } from "@storybook/blocks";
+import * as ButtonStories from "./button.stories";
+
+<Meta of={ButtonStories} />
+
+<Title />
+
+# Button
+
+Buttons allow users to take actions, submit forms, and make choices with a single tap or click. Built with pure CSS tokens and accessible interactive states.
+
+## Default
+
+<Canvas of={ButtonStories.Default} />
+
+## Variants
+
+Available in `default`, `secondary`, `outline`, `destructive`, `ghost`, and `link`.
+
+<Canvas of={ButtonStories.AllVariants} />
+
+## Sizes
+
+Supports `sm`, `default`, `lg`, and `icon`.
+
+<Canvas of={ButtonStories.AllSizes} />
+
+## With Icons
+
+Integrates seamlessly with Lucide or any SVG icon set.
+
+<Canvas of={ButtonStories.WithIcons} />
+
+## Disabled State
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Component Properties
+
+<Controls />

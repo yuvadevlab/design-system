@@ -1,0 +1,30 @@
+import { Meta, Title, Description, Canvas, Controls } from "@storybook/blocks";
+import * as InputStories from "./input.stories";
+
+<Meta of={InputStories} />
+
+<Title />
+
+# Input
+
+Form text input supporting start and end icons, password masking toggles, error borders, and customizable focus rings.
+
+## Default
+
+<Canvas of={InputStories.Default} />
+
+## With Start Icon
+
+<Canvas of={InputStories.WithStartIcon} />
+
+## With End Icon
+
+<Canvas of={InputStories.WithEndIcon} />
+
+## Disabled State
+
+<Canvas of={InputStories.Disabled} />
+
+## Component Properties
+
+<Controls />

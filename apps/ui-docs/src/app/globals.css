@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@source "../**";
+@import "@yuva-devlab/tokens/preset.css";
+@import "@yuva-devlab/tokens/themes/orchestrai.css";
+@import "@yuva-devlab/tokens/themes/finai.css";
+@import "@yuva-devlab/ui/styles.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}

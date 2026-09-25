@@ -1,0 +1,24 @@
+import { Meta, Title, Description, Canvas, Controls } from "@storybook/blocks";
+import * as BadgeStories from "./badge.stories";
+
+<Meta of={BadgeStories} />
+
+<Title />
+
+# Badge
+
+Displays metadata, statuses, count indicators, or short labels with semantic color tokens.
+
+## Default
+
+<Canvas of={BadgeStories.Default} />
+
+## Variants
+
+Available in `default`, `secondary`, `outline`, `destructive`, `success`, `warning`, and `info`.
+
+<Canvas of={BadgeStories.AllVariants} />
+
+## Component Properties
+
+<Controls />
