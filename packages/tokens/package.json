@@ -6,7 +6,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "style": "./dist/styles.css",
+  "style": "./styles/styles.css",
   "sideEffects": [
     "**/*.css"
   ],
@@ -19,15 +19,16 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./preset.css": "./dist/preset.css",
-    "./styles.css": "./dist/styles.css",
-    "./root.css": "./dist/root.css",
-    "./themes/finai.css": "./dist/themes/finai.css",
-    "./themes/orchestrai.css": "./dist/themes/orchestrai.css",
+    "./preset.css": "./styles/preset.css",
+    "./styles.css": "./styles/styles.css",
+    "./root.css": "./styles/root.css",
+    "./themes/finai.css": "./styles/themes/finai.css",
+    "./themes/orchestrai.css": "./styles/themes/orchestrai.css",
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "styles"
   ],
   "license": "MIT",
   "scripts": {
